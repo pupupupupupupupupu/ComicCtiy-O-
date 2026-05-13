@@ -1,0 +1,42 @@
+.comicLoader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  gap: 1.5rem;
+}
+
+.panelGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 6px;
+  width: 80px;
+  height: 80px;
+}
+
+.panel {
+  border-radius: 4px;
+  background: var(--color-purple, #8284c2);
+  opacity: 0.15;
+  animation: panelPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes panelPulse {
+  0%   { opacity: 0.12; transform: scale(0.9); }
+  100% { opacity: 0.85; transform: scale(1); background: var(--color-green, #7adb35); }
+}
+
+.loaderText {
+  font-family: "Bangers", "Nunito", cursive;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--color-purple, #8284c2);
+  animation: textBlink 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes textBlink {
+  from { opacity: 0.5; }
+  to   { opacity: 1; }
+}

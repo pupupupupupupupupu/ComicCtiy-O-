@@ -1,0 +1,338 @@
+.profilePage { min-height: 80vh; }
+
+/* ── Gate ────────────────────────────────────────────────────────────────── */
+.profileGate {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; min-height: 60vh; gap: 1rem;
+  font-size: 1.1rem; color: #666; text-align: center; padding: 2rem;
+}
+.profileGate h2 { font-family: "Bangers", cursive; font-size: 2rem; color: var(--color-purple); letter-spacing: 2px; }
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.profileHeader {
+  display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap;
+  padding: 2rem 3rem;
+  max-width: 1000px; margin: 0 auto;
+}
+.profileAvatar {
+  width: 90px; height: 90px; border-radius: 50%;
+  border: 3px solid var(--color-purple); object-fit: cover; flex-shrink: 0;
+}
+.profileHeaderInfo { flex: 1; min-width: 180px; display: flex; flex-direction: column; gap: 0.3rem; }
+.profileDisplayName { font-size: 1.6rem; font-weight: 800; color: var(--color-text); }
+.profileUsername    { font-size: 0.9rem; color: var(--color-purple); }
+.profileBio         { font-size: 0.88rem; color: #555; line-height: 1.6; max-width: 420px; }
+.profileJoinDate    { font-size: 0.78rem; color: #aaa; margin-top: 0.25rem; }
+
+/* ── Stats ───────────────────────────────────────────────────────────────── */
+.profileStats {
+  display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-start;
+}
+.statBadge {
+  display: flex; flex-direction: column; align-items: center;
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 10px; padding: 0.75rem 1.1rem; min-width: 70px;
+}
+.statValue { font-size: 1.4rem; font-weight: 800; color: var(--color-purple); line-height: 1; }
+.statLabel { font-size: 0.7rem; color: #888; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.2rem; }
+
+/* ── Tab bar ─────────────────────────────────────────────────────────────── */
+.profileTabBar {
+  display: flex; gap: 0; overflow-x: auto;
+  border-bottom: 2px solid var(--color-border);
+  padding: 0 2rem; max-width: 1000px; margin: 0 auto;
+}
+.profileTabBtn {
+  padding: 10px 18px; border: none; background: transparent;
+  font-family: "Nunito", sans-serif; font-size: 0.88rem; font-weight: 700;
+  color: #888; cursor: pointer; white-space: nowrap;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.profileTabBtn:hover  { color: var(--color-purple); }
+.profileTabBtn.active { color: var(--color-purple); border-bottom-color: var(--color-purple); }
+
+/* ── Tab content ─────────────────────────────────────────────────────────── */
+.profileTabContent {
+  max-width: 1000px; margin: 0 auto; padding: 1.5rem 2rem 3rem;
+}
+.profileEmpty {
+  padding: 3rem; text-align: center; color: #aaa; font-size: 0.95rem;
+}
+
+/* ── Mini card grid ──────────────────────────────────────────────────────── */
+.profileMiniGrid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 1rem;
+}
+.miniCard {
+  display: flex; flex-direction: column; cursor: pointer;
+  border-radius: 8px; overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+  background: var(--color-surface);
+}
+.miniCard:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(130,132,194,0.2); }
+.miniCard img   { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; }
+.miniCardName   { font-size: 0.72rem; font-weight: 700; padding: 5px 7px; color: var(--color-text);
+                  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── Bookmarks ───────────────────────────────────────────────────────────── */
+.bookmarkGroups { display: flex; flex-direction: column; gap: 1rem; }
+.bookmarkGroup  { border: 1px solid var(--color-border); border-radius: 10px; overflow: hidden; }
+.groupHeader {
+  width: 100%; display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.85rem 1rem; background: var(--color-surface);
+  border: none; cursor: pointer; font-family: "Nunito", sans-serif;
+  font-size: 0.9rem; font-weight: 700; text-align: left;
+  transition: background 0.15s;
+}
+.groupHeader:hover { background: #ebebf8; }
+.groupName    { flex: 1; }
+.groupCount   { font-size: 0.78rem; color: #888; }
+.groupChevron { font-size: 0.75rem; color: #aaa; flex-shrink: 0; }
+
+.bookmarkGrid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.75rem; padding: 0.75rem;
+}
+.bookmarkItem { position: relative; }
+.removeBookmarkBtn {
+  position: absolute; top: 4px; right: 4px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(231,76,60,0.85); border: none; color: #fff;
+  font-size: 0.6rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.15s;
+}
+.bookmarkItem:hover .removeBookmarkBtn { opacity: 1; }
+
+/* ── Comment history ─────────────────────────────────────────────────────── */
+.commentHistoryList { display: flex; flex-direction: column; gap: 0.75rem; }
+.commentHistoryItem {
+  display: flex; gap: 0.9rem; align-items: flex-start;
+  padding: 0.9rem 1rem; border-radius: 10px;
+  border: 1px solid var(--color-border); background: #fff;
+  text-decoration: none; color: inherit;
+  transition: box-shadow 0.15s, transform 0.1s;
+}
+.commentHistoryItem:hover { box-shadow: 0 4px 14px rgba(130,132,194,0.15); transform: translateX(3px); }
+.commentHistoryThumb { width: 44px; height: 60px; object-fit: cover; border-radius: 5px; flex-shrink: 0; }
+.commentHistoryBody  { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.2rem; }
+.commentHistoryComic { font-size: 0.8rem; font-weight: 700; color: var(--color-purple); }
+.commentHistoryText  { font-size: 0.875rem; color: #444; line-height: 1.5;
+                       white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.commentHistoryDate  { font-size: 0.72rem; color: #bbb; }
+
+/* ── Settings ────────────────────────────────────────────────────────────── */
+.settingsForm { display: flex; flex-direction: column; gap: 1.4rem; max-width: 480px; }
+.settingsMsg  { padding: 10px 14px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; }
+.settingsMsg.success { background: rgba(122,219,53,0.15); color: #2a7010; border: 1px solid #7adb35; }
+.settingsMsg.error   { background: #fdecea; color: #c0392b; border: 1px solid #e74c3c; }
+.settingsGroup { display: flex; flex-direction: column; gap: 0.4rem; }
+.settingsLabel { font-size: 0.88rem; font-weight: 700; color: var(--color-text); }
+.settingsInput {
+  border: 1.5px solid var(--color-border); border-radius: 8px;
+  padding: 10px 13px; font-family: "Nunito", sans-serif; font-size: 0.9rem;
+  outline: none; transition: border-color 0.2s; background: var(--color-surface);
+}
+.settingsInput:focus    { border-color: var(--color-purple); }
+.settingsTextarea       { resize: vertical; min-height: 80px; }
+.settingsHint           { font-size: 0.75rem; color: #aaa; }
+.radioGroup             { display: flex; flex-direction: column; gap: 0.5rem; }
+.radioOption {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 9px 14px; border-radius: 8px; border: 1.5px solid var(--color-border);
+  cursor: pointer; font-size: 0.88rem; font-weight: 600;
+  transition: border-color 0.15s, background 0.15s;
+}
+.radioOption input      { accent-color: var(--color-purple); }
+.radioOption.selected   { border-color: var(--color-purple); background: rgba(130,132,194,0.08); }
+.radioOption:has(input:disabled) { opacity: 0.55; cursor: not-allowed; }
+
+/* ── Pagination ──────────────────────────────────────────────────────────── */
+.profilePagination {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.5rem; padding: 2rem 0 0; font-size: 0.9rem; color: #666;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .profileHeader { padding: 1.5rem 1rem; gap: 1rem; }
+  .profileTabBar { padding: 0 0.5rem; }
+  .profileTabContent { padding: 1.25rem 1rem 2rem; }
+  .profileStats  { gap: 0.6rem; }
+  .statBadge     { padding: 0.6rem 0.8rem; min-width: 60px; }
+  .profileMiniGrid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+}
+
+/* ── Avatar upload ───────────────────────────────────────────────────────── */
+.avatarUploadWrap {
+  position: relative; display: inline-block;
+}
+.avatarEditBtn {
+  position: absolute; bottom: 2px; right: 2px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--color-purple); color: #fff;
+  border: none; cursor: pointer; font-size: 0.75rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  transition: background 0.15s;
+}
+.avatarEditBtn:hover:not(:disabled) { background: var(--color-purple-dark); }
+.avatarEditBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.dpSection { display: flex; align-items: center; gap: 1.25rem; }
+
+/* Larger avatar in header for own profile */
+.headerAvatar {
+  width: 90px; height: 90px; border-radius: 50%;
+  object-fit: cover; border: 3px solid var(--color-purple); flex-shrink: 0;
+}
+
+/* ── Privacy toggle ──────────────────────────────────────────────────────── */
+.groupHeaderRow {
+  display: flex; align-items: center; gap: 0;
+}
+.groupHeaderRow .groupHeader { flex: 1; border-radius: 0; }
+
+.privacyToggle {
+  flex-shrink: 0;
+  padding: 0.6rem 0.9rem;
+  border: none; border-left: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-family: "Nunito", sans-serif; font-size: 0.75rem; font-weight: 700;
+  cursor: pointer; transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.privacyToggle:hover:not(:disabled) { background: #ebebf8; }
+.privacyToggle.public  { color: #2a7010; }
+.privacyToggle.private { color: #888; }
+.privacyToggle:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── Saved artists list ──────────────────────────────────────────────────── */
+.artistsList { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.artistRow {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #e5e1f8);
+  border-radius: var(--radius-md, 10px);
+  transition: box-shadow 0.15s;
+}
+.artistRow:hover { box-shadow: var(--shadow-sm); }
+
+.artistRowAvatar {
+  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--color-purple, #7c6ef5), var(--color-purple-mid, #a193f8));
+  color: #fff; font-family: "Bangers", cursive; font-size: 1.3rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; letter-spacing: 1px;
+  transition: opacity 0.15s;
+}
+.artistRowAvatar:hover { opacity: 0.8; }
+
+.artistRowName {
+  flex: 1; font-weight: 700; font-size: 0.95rem; cursor: pointer;
+  color: var(--color-text, #1e1b2e);
+  transition: color 0.15s;
+}
+.artistRowName:hover { color: var(--color-purple, #7c6ef5); }
+
+.unfollowBtn { padding: 6px 14px; font-size: 0.8rem; flex-shrink: 0; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   COLLAB & NOTIFICATION TABS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Section toggle (Received / Sent) ─────────────────────────────────── */
+.notifTabWrap       { display: flex; flex-direction: column; gap: 1rem; }
+.notifSectionToggle { display: flex; gap: 0; border-bottom: 2px solid var(--color-border); }
+.notifSectionBtn {
+  padding: 8px 20px; border: none; background: transparent;
+  font-family: "Nunito", sans-serif; font-size: 0.88rem; font-weight: 700;
+  color: #888; cursor: pointer; display: flex; align-items: center; gap: 6px;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.notifSectionBtn:hover  { color: var(--color-purple); }
+.notifSectionBtn.active { color: var(--color-purple); border-bottom-color: var(--color-purple); }
+.notifSectionBadge {
+  background: #e74c3c; color: #fff; border-radius: 10px;
+  font-size: 0.7rem; font-weight: 800; padding: 1px 7px; min-width: 18px; text-align: center;
+}
+
+/* ── Collab request card ──────────────────────────────────────────────── */
+.collabReqCard {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+  padding: 1rem 1.25rem; border: 1px solid var(--color-border);
+  border-radius: 12px; background: var(--color-surface);
+  margin-bottom: 0.75rem; flex-wrap: wrap;
+  transition: box-shadow 0.15s;
+}
+.collabReqCard:hover { box-shadow: 0 4px 16px rgba(124,110,245,0.1); }
+
+.collabReqLeft  { display: flex; gap: 1rem; flex: 1; min-width: 0; }
+.collabReqRight { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+
+.collabReqCover {
+  width: 50px; height: 68px; border-radius: 6px; object-fit: cover;
+  cursor: pointer; flex-shrink: 0;
+}
+.collabReqInfo  { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.collabReqComicName { font-weight: 800; font-size: 0.95rem; color: var(--color-text); margin: 0; }
+.collabReqFrom      { font-size: 0.84rem; color: #555; margin: 0; }
+.collabReqPitch     { font-size: 0.82rem; color: #666; font-style: italic; margin: 0; line-height: 1.4; }
+.collabPortfolioLink{ font-size: 0.78rem; color: var(--color-purple); text-decoration: none; font-weight: 700; }
+.collabPortfolioLink:hover { text-decoration: underline; }
+.collabReqDate      { font-size: 0.72rem; color: #bbb; margin: 0; }
+
+.collabRoleChip {
+  display: inline-block; background: var(--color-purple-light, #ede9ff);
+  color: var(--color-purple); padding: 2px 9px; border-radius: 12px;
+  font-size: 0.75rem; font-weight: 800; margin-left: 4px;
+}
+.collabRoleChip.small { font-size: 0.7rem; padding: 1px 7px; }
+
+.collabReqStatus {
+  font-size: 0.78rem; font-weight: 800; white-space: nowrap;
+}
+.collabReqActions { display: flex; gap: 6px; }
+.collabActBtn     { padding: 6px 12px !important; font-size: 0.8rem !important; }
+
+/* ── Collaborations tab ───────────────────────────────────────────────── */
+.collabsTabWrap  { display: flex; flex-direction: column; gap: 1rem; }
+.collabsFilter   { display: flex; gap: 6px; flex-wrap: wrap; }
+.collabsFilterBtn {
+  padding: 5px 14px; border-radius: 20px; border: 1.5px solid var(--color-border);
+  background: transparent; font-family: "Nunito", sans-serif;
+  font-size: 0.8rem; font-weight: 700; color: #888; cursor: pointer;
+  transition: all 0.15s;
+}
+.collabsFilterBtn:hover  { border-color: var(--color-purple); color: var(--color-purple); }
+.collabsFilterBtn.active { background: var(--color-purple); color: #fff; border-color: var(--color-purple); }
+
+.collabsList { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.collabCard {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.25rem; border: 1px solid var(--color-border);
+  border-radius: 12px; background: var(--color-surface);
+  transition: box-shadow 0.15s;
+}
+.collabCard:hover { box-shadow: 0 4px 16px rgba(124,110,245,0.1); }
+
+.collabCardCover {
+  width: 48px; height: 65px; border-radius: 6px; object-fit: cover;
+  cursor: pointer; flex-shrink: 0;
+}
+.collabCardBody  { flex: 1; min-width: 0; }
+.collabCardComic { font-weight: 800; font-size: 0.92rem; color: var(--color-text); margin: 0 0 3px; }
+.collabCardPartner { font-size: 0.82rem; color: #666; margin: 0 0 4px; }
+.collabCardLastMsg { font-size: 0.78rem; color: #aaa; margin: 0 0 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.collabCardMeta  { display: flex; align-items: center; gap: 10px; }
+.collabCardStatus{ font-size: 0.76rem; font-weight: 800; }
+.collabCardUnread{
+  background: var(--color-purple); color: #fff;
+  font-size: 0.7rem; font-weight: 800; padding: 2px 8px; border-radius: 10px;
+}
+.collabCardBtn   { flex-shrink: 0; font-size: 0.82rem !important; padding: 7px 14px !important; }
