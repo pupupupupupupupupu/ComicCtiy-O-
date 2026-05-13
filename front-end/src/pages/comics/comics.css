@@ -1,0 +1,15 @@
+.comicsPage { min-height: 80vh; }
+
+.emptyState {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 30vh; font-size: 1rem; color: #888;
+}
+.errorMsg {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 30vh; color: var(--color-danger, #f05252); font-weight: 700;
+}
+.pagination {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.5rem; padding: 2.5rem 1rem;
+}
+.pageInfo { font-size: 0.9rem; color: #666; font-weight: 600; }

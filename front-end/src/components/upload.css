@@ -1,0 +1,262 @@
+.uploadPage { min-height: 100vh; }
+
+/* ── Auth gate ───────────────────────────────────────────────────────────── */
+.uploadGate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+.uploadGate h2 {
+  font-family: "Bangers", cursive;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--color-purple);
+}
+.uploadGate p { color: #666; margin-bottom: 0.5rem; }
+
+/* ── Form layout ─────────────────────────────────────────────────────────── */
+.uploadForm {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup { display: flex; flex-direction: column; gap: 0.4rem; }
+.formRow   { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.formLabel {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+.optional { font-weight: 400; font-size: 0.78rem; color: #888; }
+
+.formInput {
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  transition: border-color 0.2s;
+  outline: none;
+}
+.formInput:focus   { border-color: var(--color-purple); }
+.formTextarea      { resize: vertical; min-height: 100px; }
+
+/* ── File drop zones ─────────────────────────────────────────────────────── */
+.fileDropZone {
+  position: relative;
+  border: 2px dashed var(--color-border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+  cursor: pointer;
+  color: #888;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, background 0.2s;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.fileDropZone:hover          { border-color: var(--color-purple); background: #f0f0fb; }
+.fileDropZone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.filePreview  { max-height: 140px; border-radius: 6px; object-fit: cover; }
+.coverPreview { max-height: 200px; }
+
+.addPagesZone { min-height: 70px; }
+
+/* ── Genre chips ─────────────────────────────────────────────────────────── */
+.genreGrid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.genreChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  user-select: none;
+}
+.genreChip input  { display: none; }
+.genreChip:hover  { border-color: var(--color-purple); }
+.genreChip.selected {
+  border-color: var(--color-green);
+  background: rgba(122,219,53,0.12);
+  color: #2a6010;
+}
+
+/* ── Pages toolbar ───────────────────────────────────────────────────────── */
+.pagesToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.6rem 0 0.4rem;
+}
+.fileCount    { font-size: 0.82rem; color: #888; }
+.clearPagesBtn {
+  background: transparent;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.clearPagesBtn:hover { background: #e74c3c; color: #fff; }
+
+/* ── Drag-to-reorder grid ────────────────────────────────────────────────── */
+.pageReorderGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.pageReorderItem {
+  position: relative;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: grab;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+}
+.pageReorderItem:active { cursor: grabbing; }
+.pageReorderItem:hover  {
+  border-color: var(--color-purple);
+  box-shadow: 0 4px 14px rgba(130,132,194,0.25);
+  transform: translateY(-2px);
+}
+
+.reorderThumb {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+}
+
+.pageNumber {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: var(--color-purple);
+  color: #fff;
+  font-family: "Bangers", cursive;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  padding: 1px 7px;
+  border-radius: 4px;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+.pageFileName {
+  padding: 4px 6px;
+  font-size: 0.65rem;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-top: 1px solid var(--color-border);
+}
+
+.pageRemoveBtn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(231,76,60,0.85);
+  border: none;
+  color: #fff;
+  font-size: 0.65rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.pageReorderItem:hover .pageRemoveBtn { opacity: 1; }
+
+.dragHandle {
+  position: absolute;
+  bottom: 22px;
+  right: 4px;
+  color: rgba(130,132,194,0.6);
+  font-size: 0.9rem;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* ── Uploading state ─────────────────────────────────────────────────────── */
+.uploadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 2rem;
+  padding: 2rem;
+}
+.uploadProgress {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+.progressLabel { font-size: 0.9rem; color: var(--color-purple); font-weight: 700; min-height: 1.2em; }
+.progressTrack {
+  width: 100%;
+  height: 10px;
+  background: var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progressFill {
+  height: 100%;
+  background: linear-gradient(to right, var(--color-purple), var(--color-green));
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+.progressPct { font-size: 0.8rem; font-weight: 700; color: var(--color-purple); }
+
+/* ── Submit ──────────────────────────────────────────────────────────────── */
+.submitBtn { width: 100%; padding: 14px; font-size: 1rem; margin-top: 0.5rem; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 540px) {
+  .formRow   { grid-template-columns: 1fr; }
+  .uploadForm { padding: 0 1rem 2rem; }
+  .pageReorderGrid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+}
