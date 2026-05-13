@@ -1,0 +1,36 @@
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
+.notFoundInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.notFoundPanel {
+  font-family: "Bangers", cursive;
+  font-size: 8rem;
+  letter-spacing: 6px;
+  color: var(--color-purple);
+  line-height: 1;
+  -webkit-text-stroke: 2px var(--color-green);
+  text-shadow: 4px 4px 0 rgba(130,132,194,0.2);
+}
+
+.notFoundInner h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.notFoundInner p {
+  color: #888;
+  margin-bottom: 0.5rem;
+}

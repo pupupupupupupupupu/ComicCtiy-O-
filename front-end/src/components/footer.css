@@ -1,0 +1,26 @@
+.footer {
+  background: var(--color-nav-bg, #13111c);
+  border-top: 1px solid var(--color-nav-border, rgba(124,110,245,0.2));
+  padding: 2.5rem 1.5rem;
+}
+.footerInner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.4rem; text-align: center;
+}
+.footerBrand {
+  font-family: "Bangers", cursive;
+  font-size: 1.8rem; letter-spacing: 4px;
+  color: var(--color-purple-mid, #a193f8);
+}
+.footerTagline {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.3);
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+.footerCopy {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.18);
+  margin-top: 0.2rem;
+}

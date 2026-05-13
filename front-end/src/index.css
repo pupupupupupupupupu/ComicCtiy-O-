@@ -1,0 +1,23 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button { font-family: inherit; }
+
+img { max-width: 100%; height: auto; }
+
+/* Selection colour matches theme */
+::selection {
+  background: rgba(124,110,245,0.25);
+  color: #1e1b2e;
+}
