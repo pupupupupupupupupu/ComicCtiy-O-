@@ -1,0 +1,49 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Comic City — Render deployment config
+#
+# Two services:
+#   1. comic-city-api   → Express/Node backend (Web Service)
+#   2. comic-city-app   → React frontend (Static Site)
+#
+# Place this file at the REPO ROOT and connect your repo in the Render dashboard.
+# Set all env vars marked "sync: false" manually in the Render dashboard.
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+  # ── Backend ───────────────────────────────────────────────────────────────
+  - type: web
+    name: comic-city-api
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # Set these in the Render dashboard (marked sync: false = not committed):
+      - key: DATABASE
+        sync: false
+      - key: FRONTEND_URL
+        sync: false       # e.g. https://comic-city-app.onrender.com
+
+  # ── Frontend ──────────────────────────────────────────────────────────────
+  - type: web
+    name: comic-city-app
+    env: static
+    rootDir: front-end
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    autoDeploy: true
+    # The critical rule: serve index.html for every route so React Router works.
+    # This replaces the _redirects file approach and works regardless of service type.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      # Set in the Render dashboard:
+      - key: REACT_APP_URL
+        sync: false       # e.g. https://comic-city-api.onrender.com

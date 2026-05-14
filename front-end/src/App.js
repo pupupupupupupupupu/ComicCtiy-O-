@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { Auth0Provider, useAuth0 } from "@auth0/auth0-react";
 import { AppProvider } from "./Context";
 import { SocketProvider } from "./SocketContext";
+import ServerWakeUp from "./components/ServerWakeUp/ServerWakeUp";
 import Navbar      from "./components/navbar";
 import Footer      from "./components/footer";
 import ComicLoader from "./components/ComicLoader";
@@ -71,6 +72,7 @@ function App() {
     <BrowserRouter>
       <Auth0ProviderWithNavigate>
         <AppProvider>
+          <ServerWakeUp>
           <SocketProvider>
           <AuthGate>
             <LogoutReturnHandler />
@@ -99,6 +101,7 @@ function App() {
             </div>
           </AuthGate>
           </SocketProvider>
+          </ServerWakeUp>
         </AppProvider>
       </Auth0ProviderWithNavigate>
     </BrowserRouter>
